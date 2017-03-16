@@ -1,6 +1,32 @@
-$('.lines-button').click(function() {
-    $(this).toggleClass("close");
-    $('.menu').toggleClass("open");           
+$(document).ready(function(){
+
+    $('.lines-button').click(function() {
+        $(this).toggleClass('close');
+        $('.menu').toggleClass('open');           
+    });
+
+    var projectImageWidth = $('.projects-images img').width();
+    var projectImageHeight = $('.projects-images img').height();
+
+    $('.project-overlay').css('width', projectImageWidth);
+    $('.project-overlay').css('height', projectImageHeight);
+    // $('.project-overlay').css('top', - projectImageHeight - 4);
+
+    function updateContainer() {
+        
+        var projectImageWidth = $('.projects-images img').width();
+        var projectImageHeight = $('.projects-images img').height();
+
+        $('.project-overlay').css('width', projectImageWidth);
+        $('.project-overlay').css('height', projectImageHeight);
+        // $('.project-overlay').css('top', - projectImageHeight - 4);
+    }
+
+    updateContainer();
+
+    $(window).resize(function() {
+        updateContainer();
+    });
 });
 
 // $('.lines-button').click( function(){
