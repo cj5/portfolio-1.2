@@ -1,0 +1,8 @@
+@mixin line {
+    display: inline-block;
+    width: 25px;
+    height: 3px;
+    background: black;
+    border-radius: 10px; 
+    transition: $transition;
+}

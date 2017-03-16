@@ -1,0 +1,119 @@
+body {
+    font-family: "Quicksand", sans-serif;
+    color: white;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:0.4s;
+    -moz-animation-duration:0.4s;
+    animation-duration:0.4s;
+}
+
+.fade-in.slow {
+    animation-delay:.3s;
+}
+
+.main-page {
+    width: 100%;
+    /*height: 100%;*/
+    height: 779px;
+    background-color: #336EE8;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    display: inline;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.main-nav ul {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.main-nav li {
+    display: inline;
+}
+
+.one:hover {
+    color: #C4C4C4;
+}
+
+.title {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.title a {
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+h1 {
+    font-family: "Josefin Slab", sans-serif;
+    font-size: 120px;
+    text-align: center;
+    /*margin: 250px 40px;*/
+    font-weight: 600;
+    letter-spacing: -3px;
+    margin: 0;
+}
+
+hr {
+    position: relative;
+    top: 35%;
+    transform: translateY(-50%);
+    height: 20px;
+    color: white;
+    width: 60px;
+}
+
+.subtitle {
+    position: relative;
+    top: 36%;
+    transform: translateY(-50%);
+}
+
+.subtitle a {
+    text-decoration: none;
+    color: white;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+}
+
+.contact {
+    text-align: center;
+    position: relative;
+    top: 58%;
+    transform: translateY(-58%);
+}
+
+.contact a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}

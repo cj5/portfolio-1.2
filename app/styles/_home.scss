@@ -1,0 +1,801 @@
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration: 0.4s;
+    -moz-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+}
+
+.fade-in.slow {
+    animation-delay: 0.3s;
+}
+
+
+body {
+    font-family: $raleway;
+}
+
+h1 {
+    color: $main;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 20px 0;
+    font-weight: 700;
+    a {
+        color: $main;
+    }
+}
+
+h2 {
+    color: $main;
+    font-size: 27px;    
+    position: relative;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+h3 {
+    color: $main;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+p {
+    color: $main;
+    font-size: 14px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .4;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+canvas:hover {
+    opacity: 0.4;
+}
+
+img {
+    width: 85%;
+    max-width: 100%;
+    padding: 20px 4px;
+}
+
+.nav-menu {
+    display:none;
+}
+
+.menu {
+    background: rgba(0, 0, 0, 0);
+    display: none;
+}
+
+.menu.open {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 900;
+    transition: 0.3s ease-in-out;
+    ul {
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 900;
+    }    
+}
+
+.projects-images {
+    opacity: .8;
+    transition: all .2s ease-in-out;  
+    &:hover {
+        opacity: 1;
+        transform: scale(1.025);
+    }          
+}
+
+.col-xs-2 {
+    padding-right: 5px;
+}
+
+.col-xs-6 {
+    padding: 0px;
+}
+
+.lines-button {
+    display: inline-block;
+    // padding: $button-size/2 $button-size/4;
+    transition: .3s;
+    cursor: pointer;
+    user-select: none;
+    border-radius: $button-size/7;
+    float: right;
+    margin: 0px 4px;
+    width: 45px;
+    height: 45px;
+    color: black;
+
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      transition: 0.2s;
+      // background: rgba(0,0,0,0);
+    }
+}
+
+.lines {
+    //create middle line
+    @include line();
+    position: relative; 
+
+    /*create the upper and lower lines as pseudo-elements of the middle line*/
+    &:before, &:after {
+
+     @include line();
+      position: absolute;
+        left:0;
+      content: '';
+      transform-origin: $button-size/14 center;
+    }
+    &:before { top: $button-size/4; }
+    &:after { top: -$button-size/4; }
+}
+
+// .lines-button:hover {
+//     opacity: 1;
+      
+//     .lines {
+//         &:before { top: $button-size/3.5; }
+//         &:after { top: -$button-size/3.5; }
+//     }
+// }
+
+.lines-button.x.close .lines {
+
+    /*hide the middle line*/
+    background: transparent;
+    top: -5px;
+    position: relative;
+    z-index: 900;
+    
+
+    /*overlay the lines by setting both their top values to 0*/
+    &:before, &:after{
+        transform-origin: 50% 50%;
+        top:0;
+        width: 25px;
+        background: white;
+    }
+
+    // rotate the lines to form the x shape
+    &:before{
+        transform: rotate3d(0, 0, 1, 45deg); 
+    }
+    &:after{
+        transform: rotate3d(0, 0, 1, -45deg); 
+    }
+}
+
+.close {
+    opacity: 1;
+}
+
+button {
+    display: inline-block;
+    margin: 0 1em;
+    border: none;
+    background: none;
+}
+
+button:focus {outline: none;}
+
+.container-fluid.container.main-nav {
+    position: absolute;
+    top: 0;
+}
+
+a:hover {
+    text-decoration: none;
+    color: $main;
+}
+
+.gray:hover {
+    color: $gray;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    .menu {
+        list-style-type: none;
+        text-decoration: none;
+        padding: 140px 0;
+        text-align: center;            
+        font-weight: 700;
+        letter-spacing: 3px;            
+        text-transform: uppercase;
+        li {
+            font-size: 50px;
+            margin: 30px 0;
+            list-style-type: none;
+            a {
+                color: white;
+            }    
+        }
+    }
+}
+
+.container {
+    padding: 0 10px;
+}
+
+.header-wrapper {
+    height: 100%;
+    width: 100%;
+    margin-right: 0;
+    background-color: $header;
+    opacity: .9;
+}
+
+.navicon {
+    float: right;
+    top: 4px;
+    right: -10px;    
+}
+
+.subtitle-wrapper {
+    position: absolute;
+    top: 45%; 
+} 
+
+// PROJECTS STYLES -----------------
+
+.projects-wrapper {
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+    z-index: -1;
+}
+
+.projects-images {
+    text-align: center;
+    // margin: 10px 0;
+}    
+
+// FOOTER STYLES -------------------
+
+.footer-wrapper {
+    background-color: $footer;
+    height: 250px;
+    display: inline;
+    width: 100%;
+    text-align: center;
+    float: left;
+    position: relative;
+    z-index: -1;
+        li {
+            list-style-type: none;
+            padding: 20px 0;
+        }
+        ul {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        a {
+            border-bottom: 2px solid #292929;
+            padding-bottom: 20px;
+            &:hover {
+                border-bottom: 2px solid #999999;
+                padding-bottom: 3px;
+            }
+            transition: all 0.2s ease-in-out;
+        }
+}
+
+.footer-font {
+    font-size: 25px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+// ABOUT PAGE STUFF -----------------
+.about-wrapper {
+    width: 100%;
+    line-height: 24px;
+    margin: 70px 0;
+    position: relative;
+    z-index: -1;
+}
+
+.resume-button {
+    text-align: center;
+    margin-top: 25px;
+}
+
+// BUTTON ---------------------------
+
+.btn {
+    border: solid 1px $main;
+    border-radius: 25px;
+    background-color: #fff;
+    border: none;
+    color: #242324;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    width: 170px;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 40px;
+    transition: all 0.2s ease-in-out;
+        a {
+            color: $main;
+        }
+}
+
+.btn-default {
+    border: solid 1px $main;
+}
+
+.btn-default:hover {
+    color: #fff;
+    background-color: $main;
+    border-color: $main;
+}
+
+// span .btn-default {
+//     cursor: pointer;
+//     display: inline-block;
+//     position: relative;
+// }
+
+// CONTACT STYLES -------------------
+
+.contact-wrapper {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    position: relative;
+    z-index: -1;
+    li {
+        list-style-type: none;
+        padding-left: 7px;
+        a {
+            color: $main;
+        }
+    }   
+}
+
+.h3-wrapper {
+    h3 {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+}
+
+.contact-svgs {
+    display: inline-block;
+    padding: 0;
+    // ul {
+    //     position: relative;
+    //     right: 5px;
+    // }
+    a {
+        float: left;
+        margin-right: 15px;
+    }
+}
+
+.icon {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  stroke-width: 0;
+  stroke: #787878;
+  fill: #787878;
+  color: red;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-mail4:hover {
+    stroke: #FF3F41;
+    fill: #FF3F41;
+}
+.icon-linkedin:hover {
+    stroke: #007bb6;
+    fill: #007bb6;
+}
+.icon-github:hover {
+    stroke: #6e5494;
+    fill: #6e5494;
+}
+
+.contact-list {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.email-style {
+    text-decoration: none;
+}
+
+.contact-title {
+    margin-right: 40px;
+    color: #999999;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.contact-info {
+    margin-top: 20px;
+    line-height: 40px;
+    display: inline;
+    padding: 0;
+}
+
+.contact-list:visited {
+    text-decoration: none;
+    color: $main;
+}
+
+//MEDIA QUERIES ----------------------
+
+/* Portrait */
+@media only screen 
+    and (min-device-width: 320px) 
+    and (max-device-width: 480px)
+    and (-webkit-min-device-pixel-ratio: 2)
+    and (orientation: portrait) {
+}
+
+/* Landscape */
+@media only screen 
+    and (min-device-width: 320px) 
+    and (max-device-width: 600px)
+    and (-webkit-min-device-pixel-ratio: 2)
+    and (orientation: landscape) {
+        img { 
+            width: 60%;
+        }
+        .container-fluid .menu {
+            padding: 0%;
+        }   
+    } 
+
+/* Landscape */
+@media only screen 
+    and (min-device-width: 601px) 
+    and (max-device-width: 750px)
+    and (-webkit-min-device-pixel-ratio: 2)
+    and (orientation: landscape) {
+        img { 
+            width: 60%;
+        }
+        .container-fluid .menu {
+            padding: 5% 0;
+        }   
+    }               
+        
+
+// SMALL TABLET ----------------------------
+@media screen and (min-width: 480px) {
+    .header-wrapper {
+        height: 64%;
+    }
+    canvas {
+        height: 64%;
+    }
+    .subtitle-wrapper {
+        top: 29%;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    img {
+        width: 65%;
+    }
+    .container-fluid .menu {
+        padding: 50% 0;
+    }
+    .projects-wrapper {
+        margin: 30px 0;
+    }
+}
+
+// LARGE TABLET --------------------------------
+@media screen and (min-width: 768px) {
+    .container {
+        padding: 0 40px;
+        margin: 0;
+        width: 100%;
+    }
+    .header-wrapper {
+        height: 500px;
+    }
+    canvas {
+        height: 500px;
+    }
+    .subtitle-wrapper {
+        top: 28%;
+        font-size: 30px;
+    }
+    h1 {
+        font-size: 12px;
+        font-weight: 700;
+        // a {
+        //     transition: all 0.2s ease-in-out;
+        //     border-bottom: 2px solid transparent; 
+        //     padding-bottom: 15px;
+
+        // }
+        // a:hover {
+        //     color: $gray;
+        //     border-bottom: 2px solid $gray;    
+        // }
+    }
+    h2 {
+        font-size: 40px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    .h3-wrapper h3 {
+        font-size: 20px;
+    }
+    .contact-title {
+        font-size: 15px;
+    }
+    .contact-list {
+        font-size: 15px;
+    }
+    a.contact-list {
+        transition: all 0.2s ease-in-out;
+    }
+    img {
+        width: 50%;
+    }
+    // .container-fluid .menu {
+    //     padding: 42% 0;
+    // }
+    .container.contact-wrapper {
+        margin: 60px 0;
+    }
+    .container.projects-wrapper {
+        margin: 60px 0;
+    }
+    .container.about-wrapper {
+        margin: 100px 0;
+        float: left;
+        padding: 0 40px;
+    }
+    .button {
+    border-radius: 4px;
+    background-color: #EDEDEC;
+    border: none;
+    color: #242324;
+    text-align: center;
+    font-size: 14px;
+    padding: 15px;
+    width: 170px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #CCCCCC;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '>>';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+a.gray:hover {
+   color: #999999;
+   text-decoration: none; 
+}
+.linkedin-blue:hover {
+    color: #1D87BE;
+}
+.contact-list:link {
+    text-decoration: none;
+    // color: #242324;
+}
+    .navicon {
+        display: none;
+    }
+    .nav-menu {
+        display: block;
+        float: left;
+        text-transform: uppercase;
+        ul {
+            float: right;
+            padding-right: 0px;
+        }
+        li {
+            list-style-type: none;
+            float: left;
+            margin: 12px 20px;
+            &:last-child {
+                margin-right: 0;
+            } 
+        }
+        a {           
+            color: $main;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.2s ease-in-out; 
+            border-top: 2px solid transparent; 
+            padding-top: 20px;   
+        }
+        a:hover {
+            color: $gray;
+            border-top: 2px solid $gray; 
+            padding-top: 5px;
+        }
+    }
+    .nav-menu.col-sm-6 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .resume-button {
+        text-align: right;
+    }
+    .projects-wrapper {
+        z-index: 0;
+    }
+    .about-wrapper {
+        z-index: 0;
+    }
+    .contact-wrapper {
+        z-index: 0;
+    }
+    .footer-wrapper {
+        z-index: 0;
+    }
+}
+
+// SMALL LAPTOP/DESKTOP -----------------------
+@media screen and (min-width: 992px) {
+    .container {
+        padding: 0 100px;
+    }
+    img {
+        width: 100%;
+        padding: 4px 4px;
+        float: left;
+    }
+    .col-md-4 {
+        padding: 0; //DIST BTWN PROJ IMGS
+        img {
+            height: auto;
+        }
+    }
+    .container.about-wrapper {
+        padding: 0 100px;
+    }
+    .footer-wrapper {
+    background-color: $footer;
+    height: 80px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    float: left;
+        li {
+            list-style-type: none;
+            margin: 0px;
+            display: inline-block;
+            padding: 0 40px;
+        }
+        .footer-font {
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+    }
+}    
+
+// MEDIUM LAPTOP/DESKTOP ----------------------
+@media screen and (min-width: 1200px) {
+    .container {
+        padding: 0 150px;
+    }
+    .container.projects-wrapper {
+        margin: 60px 0px 60px 0;
+    }
+    .container.about-wrapper {
+        padding: 0 150px;
+    }
+}       
+
+// LARGE LAPTOP/DESKTOP -----------------------
+@media screen and (min-width: 1400px) {
+    .container {
+        padding: 0 200px;
+    }   
+    .container.projects-wrapper {
+        margin: 60px 0px 60px 0;
+    }
+    .container.about-wrapper {
+        padding: 0 200px;
+    } 
+}
+
+@media screen and (min-width: 1500px) {
+    .header-wrapper {
+        height: 700px;
+    }
+    canvas {
+        height: 700px;
+    }
+}      

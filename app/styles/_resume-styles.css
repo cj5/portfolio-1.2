@@ -1,0 +1,213 @@
+
+/* Base Styles */
+/* ------------------ */
+
+body {
+	font-family: "Raleway", sans-serif;
+	color: #2B2B2B;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+    opacity:0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:0.7s;
+    -moz-animation-duration:0.7s;
+    animation-duration:0.7s;
+}	
+
+header {
+	width: 100%;
+	margin-top: 25px
+}
+
+
+/* Header */
+/* ------------------ */
+
+h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+	margin: 0;
+	left: 0px;
+	width: 50%;
+	float: left;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+h2 {
+	font-size: 16px;
+    font-weight: 600;
+	text-transform: uppercase;
+	margin: 0px;
+	letter-spacing: 1px;
+	padding: 5px 0;
+}
+
+h3 {
+	font-size: 12px;
+    font-weight: 600;
+	margin: 0 0 0 10px;
+    padding: 4px 0 2px 0;
+    line-height: 12px;
+}
+
+h4 {
+    font-size: 12px;
+	font-weight: 500;
+	margin: 0 0 5px 10px;
+	color: #BABABA;
+}
+
+ul {
+    padding: 0 0 0 30px;
+}
+
+li {
+	font-size: 12px;
+	font-weight: 300;
+	line-height: 14px;
+	text-align: left;
+    padding: 2px 0;
+}
+
+p {
+	margin: 0 0 0 10px;
+	font-size: 12px;
+	font-weight: 300;
+	line-height: 14px;
+}
+
+/*.nav-wrapper {
+    padding: 20px 0 0 50px;
+    text-transform: uppercase;
+    background-color: #2B2B2B;
+}*/
+
+.col-xs-6 {
+    padding-right: 0;
+}
+
+.x-wrapper {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+img {
+    width: 20px;
+    float: right;
+    margin: 10px 10px 0 0;
+    -webkit-transition: -webkit-transform .35s ease-in-out;
+    transition: transform .35s ease-in-out;
+}
+
+img:hover {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.home {
+    color: white;
+    font-size: 15px;
+}
+
+.home:hover {
+    color: #CCCCCC;
+}
+
+
+/* Links */
+/* ------------------ */
+
+a {
+	color: #2B2B2B;
+	transition: all .2s ease-in-out;
+}
+
+a:hover {
+	color: #1985BC;
+	text-decoration: none;
+}
+
+.info-details li {
+	text-align: center;
+	font-size: 12px;
+	line-height: 14px;
+	list-style-type: none;
+	font-weight: 300;
+}
+
+ul.info-details {
+    margin: 20px 0;
+}
+
+.container {
+	max-width: 800px;
+	background: white;
+	margin-top: 0px;
+	padding-bottom: 60px;
+}
+
+.container-fluid {
+	background: #2B2B2B;
+    padding: 0;
+}
+
+.education {
+	margin-bottom: 10px;
+}
+
+.experience li {
+	margin: 2px 0;
+}
+
+.experience ul {
+	margin-bottom: 10px;
+}
+
+.light {
+	font-weight: 300;
+	font-size: 10px;
+}
+
+.skills-list {
+	margin: 0px 0 0px 0;
+	padding-left: 5px;
+	text-align: left;
+	list-style-type: none;
+}
+
+ul.skills-list {
+    margin: 2px 0 5px 0;
+}
+
+.skills-list li {
+	line-height: 12px;
+	margin-left: 5px;
+}
+
+.pad-left {
+	padding-left: 35px;
+}
+
+article.col-xs-6 {
+    padding-left: 7px;
+}
+
+article.col-xs-6.pad-left {
+    padding-left: 35px;
+}
+
