@@ -23,7 +23,7 @@
 
 
 body {
-    font-family: $raleway;
+    font-family: $main-font;
 }
 
 h1 {
@@ -117,11 +117,17 @@ img {
         text-align: left;
         position: relative;
         background-color: rgba(0,0,0,.7);
-        top: 4px;
-        left: 4px;
+        top: 10px;
+        left: 10px;
         padding: 20px; 
+        z-index: 1000;
         .overlay-wrapper {
-            position: absolute;            
+            position: absolute;
+            transform: translateX(-500px); 
+            transition: all .2s ease-in-out; 
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;   
+            z-index: 1000;         
         }
         h3, p, ul, li {
             color: #fff;
@@ -159,6 +165,9 @@ img {
         opacity: 1;
         transform: scale(1.025);
     }
+    .project-overlay:hover .overlay-wrapper {
+        transform: translateX(0);
+    }
     // &:hover .project-overlay {
     //     left: 4px;
     //     margin-right: 0;
@@ -177,7 +186,7 @@ img {
 
 .projects-images:hover .project-overlay {
     position: relative;
-    left: 4px;
+    left: 10px;
     margin-right: 0;
     opacity: 1.0;
 }
@@ -376,7 +385,7 @@ ul {
     z-index: -1;
         li {
             list-style-type: none;
-            padding: 20px 0;
+            padding: 10px 0;
         }
         ul {
             position: relative;
@@ -479,6 +488,7 @@ ul {
 .contact-svgs {
     display: inline-block;
     padding: 0;
+    margin-top: 20px;
     // ul {
     //     position: relative;
     //     right: 5px;
@@ -797,9 +807,9 @@ a.gray:hover {
     .container {
         padding: 0 100px;
     }
-    img {
+    img {        
         width: 100%;
-        padding: 4px 4px;
+        padding: 10px;
         float: left;
     }
     .col-md-4 {
