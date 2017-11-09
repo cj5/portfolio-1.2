@@ -81,7 +81,7 @@ img {
 }
 
 .nav-menu {
-    display:none;
+    display: none;
 }
 
 .menu {
@@ -123,10 +123,10 @@ img {
         z-index: 1000;
         .overlay-wrapper {
             position: absolute;
-            transform: translateX(-500px); 
-            transition: all .2s ease-in-out; 
-            -webkit-transition: all .2s ease-in-out;
-            -moz-transition: all .2s ease-in-out;   
+            // transform: translateX(-500px); 
+            // transition: all .2s ease-in-out; 
+            // -webkit-transition: all .2s ease-in-out;
+            // -moz-transition: all .2s ease-in-out;   
             z-index: 1000;         
         }
         h3, p, ul, li {
@@ -165,9 +165,9 @@ img {
         opacity: 1;
         transform: scale(1.025);
     }
-    .project-overlay:hover .overlay-wrapper {
-        transform: translateX(0);
-    }
+    // .project-overlay:hover .overlay-wrapper {
+    //     transform: translateX(0);
+    // }
     // &:hover .project-overlay {
     //     left: 4px;
     //     margin-right: 0;
